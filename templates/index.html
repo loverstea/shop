@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <h1 class="my-4">Online Logika-Shop</h1>
+  
+        <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ url_for('static', filename='img/dish.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='img/tv.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="{{ url_for('static', filename='img/tea.jpg') }}" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+      
+        <section class = "container card-group">
+                {% for item in items %}
+                        <div class="card m-2 rounded" style="min-width: 18rem; max-width: 18erm;">
+                        <img src="{{ url_for('static', filename='img/'+ item[4]) }}" alt="image" >
+                        <div class="card-body">
+                          <h5 class="card-title">{{item[2]}}</h5>
+                          <p class="card-text">{{item[5]}} грн</p>
+                          <a href="{{ url_for('item', item_id=item[0]) }}" class="btn btn-outline-dark">Buy</a>
+                        </div>
+                      </div>
+            {% endfor %}
+        </section>
+{% endblock content %}
