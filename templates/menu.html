@@ -19,10 +19,9 @@
             Категорії
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">mach</a></li>
-            <li><a class="dropdown-item" href="#">Dish</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            {% for category in categories %}
+                <li><a class="dropdown-item" href="{{ url_for('category', id=category[0]) }}">{{category[1]}}</a></li>
+            {% endfor %}
           </ul>
         </li>
       </ul>
