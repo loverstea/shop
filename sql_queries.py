@@ -24,4 +24,25 @@ class WebShopDB:
       data = self.cursor.fetchone()
       self.close()
       return data
+   
+   def add_order(self, *data):
+      self.open()
+      self.cursor.execute('''INSERT INTO orders (item_id, name, phone, email, city, address, cost)
+                          VALUES((?),(?),(?),(?),(?),(?),(?))''', [*data])
+      self.conn.commit()
+      self.close()
+   
+   def get_categori(self):
+      self.open()
+      self.cursor.execute("SELECT * FROM categoris")
+      data = self.cursor.fetchall()
+      self.close()
+      return data
+   
+   def get_category_items(self, id):
+        self.open()
+        self.cursor.execute("SELECT * FROM items WHERE categori_id==(?)", [id])
+        data = self.cursor.fetchall()
+        self.close()
+        return data
 
