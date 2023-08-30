@@ -2,14 +2,22 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container py-5">
 
     <div class="row">
         <div class="col-12 col-lg-6">
-          {{item[4]}}
+          <img src="{{ url_for('static', filename='img/'+ item[4]) }}" alt="" class="img-fluid">
         </div>
         <div class="col-12 col-lg-6">
-          {{item[2]}}
+          <h2 class="my-4">{{item[2]}}</h2>
+          <h3>{{item[5]}} grn</h3>
+          <a class="btn btn-primary btn-lg w-25 my-3" href="{{ url_for('order', item_id = item[0]) }}" role="button">Buy</a>
+          <h5 class="my-3">Amount: {{item[6]}}</h5>
+          <h5 class="my-3">Size: {{item[-1]}}</h5>
+          <p class="my-3">Description:</p>
+          <p class="my-3">{{item[3]}}<p>
+
+            
         </div>
       </div>
 </div>
